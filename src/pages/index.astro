@@ -1,0 +1,28 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("posts"))
+  .sort((a, b) => b.data.created.getTime() - a.data.created.getTime())
+  .slice(0, 5);
+---
+
+<Layout title="home - elve">
+  <p>
+    Software engineer. Interested in the tech stuffs; systems programming,
+    games, networking etc. FOSS proponent, Linux enthusiast, vim user.
+  </p>
+
+  <h2 class="mt-10 font-bold">posts</h2>
+  <ul class="list-disc mt-2">
+    {
+      posts.map((post) => (
+        <li class="ml-4">
+          <a class="text-blue-600" href={`/p/${post.id}`}>
+            {post.data.title}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</Layout>

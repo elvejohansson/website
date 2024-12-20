@@ -1,0 +1,45 @@
+---
+export interface Props {
+  title: string;
+}
+
+import "../index.css";
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width" />
+
+    <meta name="generator" content={Astro.generator} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>{title}</title>
+  </head>
+  <body>
+    <header
+      class="flex justify-between items-center my-4 mx-6 md:mx-[15%] xl:mx-[30%]"
+    >
+      <h1 class="font-semibold">elve</h1>
+
+      <nav class="flex items-center gap-4">
+        <a href="/">home</a>
+        <a href="/p">posts</a>
+      </nav>
+    </header>
+
+    <main class="mx-6 mt-20 md:mx-[15%] xl:mx-[30%]">
+      <slot />
+    </main>
+  </body>
+</html>

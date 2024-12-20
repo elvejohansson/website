@@ -1,0 +1,26 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout title={`${post.data.title} - elve`}>
+  <div class="flex justify-between items-center mb-8">
+    <h1 class="font-semibold">{post.data.title}</h1>
+    <h2 class="italic text-neutral-200">
+      {post.data.created.toLocaleDateString()}
+    </h2>
+  </div>
+
+  <Content />
+</Layout>

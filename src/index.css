@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  font-size: 15px;
+  background: #fcfcfc;
+  color: #111;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    background: #111;
+    color: #fcfcfc;
+  }
+}
